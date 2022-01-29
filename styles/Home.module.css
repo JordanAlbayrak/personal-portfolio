@@ -32,16 +32,45 @@
   align-items: center;
   flex-grow: 1;
 }
+.gay{
+  color: red;
+
+}
 
 .title a {
-  color: #0070f3;
+  /*color: white !important;*/
   text-decoration: none;
+
+  /*transition: color ease-in 500ms 1s;*/
+
 }
+@keyframes colorBlack {
+  0% {color: black !important; font-size: small;}
+  100% {color:  red; font-size: large;}
+}
+
+@keyframes sizeUp {
+  0% {color: black !important; font-size: small;}
+  100% {color:  blue; font-size: large;}
+}
+
+@keyframes sizeDown {
+  0% {color: black !important; font-size: small;}
+  100% {color:  red; font-size: large;}
+}
+
+/*@-moz-keyframes colorBlack {*/
+/*  0% {color: black !important;}*/
+/*  100% {color:  red }*/
+/*}*/
 
 .title a:hover,
 .title a:focus,
 .title a:active {
   text-decoration: underline;
+  animation: sizeUp ease-in 1500ms forwards;
+  /*-moz-animation: colorBlack ease-in 1500ms forwards;*/
+  /*color: black !important;*/
 }
 
 .title {
@@ -58,6 +87,7 @@
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
+  background-color: #4b5842;
 }
 
 .code {

@@ -14,3 +14,48 @@ a {
 * {
   box-sizing: border-box;
 }
+.gay{
+  color: #0070f3;
+}
+
+.gay2{
+  color: purple;
+}
+.customerGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card{
+  grid-column: span 1;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+.card:last-child:nth-child(odd){
+  grid-column: span 2;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+@media screen and (max-width: 1200px) {
+
+  .customerGrid{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .card:last-child:nth-child(odd){
+    grid-column: span 1;
+  }
+}
+
+@media screen and (max-width: 530px) {
+
+  .card{
+    width: 300px;
+  }
+}
+
