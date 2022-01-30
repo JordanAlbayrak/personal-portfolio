@@ -1,3 +1,29 @@
+/*Animation Keyframes*/
+@keyframes colorBlack {
+  0% {color: black !important; font-size: small;}
+  100% {color:  red; font-size: large;}
+}
+
+@keyframes sizeUp {
+  0% {color: black !important; font-size: small;}
+  100% {color:  blue; font-size: large;}
+}
+
+@keyframes sizeDown {
+  0% {color: black !important; font-size: small;}
+  100% {color:  red; font-size: large;}
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: darkolivegreen; }
+}
+
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -6,6 +32,17 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.typewriter{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+          typing 3.5s steps(31),
+          blink-caret .75s step-end infinite;
 }
 
 .main {
@@ -32,10 +69,6 @@
   align-items: center;
   flex-grow: 1;
 }
-.gay{
-  color: red;
-
-}
 
 .title a {
   /*color: white !important;*/
@@ -43,20 +76,6 @@
 
   /*transition: color ease-in 500ms 1s;*/
 
-}
-@keyframes colorBlack {
-  0% {color: black !important; font-size: small;}
-  100% {color:  red; font-size: large;}
-}
-
-@keyframes sizeUp {
-  0% {color: black !important; font-size: small;}
-  100% {color:  blue; font-size: large;}
-}
-
-@keyframes sizeDown {
-  0% {color: black !important; font-size: small;}
-  100% {color:  red; font-size: large;}
 }
 
 /*@-moz-keyframes colorBlack {*/
@@ -68,7 +87,7 @@
 .title a:focus,
 .title a:active {
   text-decoration: underline;
-  animation: sizeUp ease-in 1500ms forwards;
+  /*animation: sizeUp ease-in 1500ms forwards;*/
   /*-moz-animation: colorBlack ease-in 1500ms forwards;*/
   /*color: black !important;*/
 }
@@ -96,7 +115,7 @@
   padding: 0.75rem;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+    Bitstream Vera Sans Mono, Roboto, Courier New, monospace;
 }
 
 .grid {
