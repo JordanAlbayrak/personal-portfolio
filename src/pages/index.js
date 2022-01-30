@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ProjectSection from '../components/ProjectSection'
 import {useEffect, useState} from "react";
 import Head from "next/head";
+import Footer from "../components/Footer";
 
 const client = require('contentful').createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -111,6 +112,7 @@ const Home = ({dataList}) => {
                     </div>
                 </div>
             </div>
+            {/*<Footer/>*/}
         </div>
     )
 }

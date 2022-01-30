@@ -12,7 +12,7 @@ export default function ProjectSection({ data}) {
                 <h2>{data.title}</h2>
                 <h5>{data.language}</h5>
                 <p>{data.description}</p>
-                <a href={data.link}> <img className={""} height={"25"} src={img_url} alt={"GithubIcon"}/></a>
+                <a href={data.link}> <img className={""} height={"30"} src={img_url} alt={"GithubIcon"}/></a>
             </div>
         </section>
 
