@@ -4,6 +4,7 @@ import ProjectSection from '../components/ProjectSection'
 import {useEffect, useState} from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 const client = require('contentful').createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -80,26 +81,37 @@ const Home = ({dataList}) => {
 
     return(
         <div>
+            <NavBar/>
             <Head>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
                               rel="stylesheet"/>
-                <title> Jordan Portfolio</title>
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+                        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"/>
+
+                <title> Jordan Albayrak</title>
             </Head>
-        {/*<NavBar/>*/}
-            {hamburgerNav}
+
+            {/*{hamburgerNav}*/}
             <div className="container card" >
-                    <h1 className={''}> Hello</h1>
-                    <button onClick={handleClick} className={'light-mode'}> Light Mode</button>
+                    {/*<h1 className={''}> Hello</h1>*/}
+                    {/*<button onClick={handleClick} className={'light-mode'}> Light Mode</button>*/}
                     <div style={{textAlign:"center"}}>
-                        <h1 className={styles.title}><a>Hi 🤟</a></h1>
+                        <h1 className={styles.title}><a>Hi there</a></h1>
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
-                        <h2 className={''} style={{textAlign:"center"}}> My name is Jordan Albayrak <br/>and I'm a developer </h2>
+                        <h2 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak <br/>and I'm a developer </h2>
                         <div className={'d-inline-block'}>
                         <p className={styles.typewriter} style={{display:"inline-block"}} > Welcome to my virtual portfolio</p>
                         </div>
                     </div>
+
+                <div className={'mt-5'}>
+                    <h3> About Me</h3>
+                    <p> Lorem Ipsums</p>
+                    <img />
+                </div>
 
 
 
