@@ -1,13 +1,19 @@
 :root {
   --main-bg-color: light grey;
   --main-text-color: black;
+  --main-invert-color: 0;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: darkolivegreen;
+  background: var(--main-bg-color) !important;
+  color: var(--main-text-color);
+}
+
+.project{
+  background: gray !important;
 }
 
 a {
@@ -30,18 +36,41 @@ a {
   grid-template-columns: 1fr 1fr;
 }
 
+
+.icon_invert_color{
+  filter: invert(var(--main-invert-color));
+}
+
 .card{
   grid-column: span 1;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  background: var(--main-bg-color) !important;
+  color: var(--main-text-color);
+  border: None !important;
 }
 .card:last-child:nth-child(odd){
   grid-column: span 2;
   margin-left: auto;
   margin-right: auto;
 
+}
+.container {
+  min-height: 80vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-div{
+  position:relative;
+  z-index:1;
+  width:100%;
+  background-color: var(--main-bg-color);
+  box-shadow: var(--main-bg-color) 0px -10px 30px;
 }
 
 ul {
@@ -70,6 +99,7 @@ li a:hover:not(.active) {
   color: white;
 }
 
+
 @media screen and (max-width: 1200px) {
 
   .customerGrid{
@@ -94,6 +124,9 @@ li a:hover:not(.active) {
 
   .card{
     width: 300px;
+  }
+  .container{
+    min-height: 130vh
   }
 }
 

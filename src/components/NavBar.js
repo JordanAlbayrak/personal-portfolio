@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const NavBar = (prop) => {
     return (
         <div>
-            <div className={'d-inline-block d-flex justify-content-center'}>
+            <div className={'d-inline-block d-flex justify-content-center light-mode'}>
                 <ul className={'nav navbar'}>
                     <li className={'nav-item'}> About</li>
                     <li className={'nav-item'}> Projects</li>

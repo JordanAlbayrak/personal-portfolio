@@ -1,10 +1,12 @@
 import styles from '../../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import ProjectSection from '../components/ProjectSection'
+import AboutSection from '../components/AboutSection'
 import {useEffect, useState} from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
+import MobileDetect from "mobile-detect";
 
 const client = require('contentful').createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -26,6 +28,7 @@ const Home = ({dataList}) => {
     const [clicked, setClicked] = useState(false)
     const [mounted, setMounted] = useState(false)
     const [hamburger, setHamburger] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
         setMounted(true)
@@ -36,6 +39,18 @@ const Home = ({dataList}) => {
     }, [clicked])
 
     useEffect(() => {
+        localStorage.setItem('setLightMode', clicked);
+    }, [clicked])
+
+    useEffect(() => {
+        const md = new MobileDetect(window.navigator.userAgent);
+
+        if (md.mobile() === null) {
+            setIsMobile(false)
+        }else {
+            setIsMobile(true)
+        }
+
         if (mounted) {
             // Create a condition that targets viewports at least 768px wide
             const mediaQuery = window.matchMedia(widthThresh_holdForSidebar);
@@ -62,8 +77,9 @@ const Home = ({dataList}) => {
     function handleClick() {
         setClicked(!clicked)
         let r = document.querySelector(':root')
-        r.style.setProperty('--main-bg-color', clicked ? 'darkolivegreen' : 'white')
+        r.style.setProperty('--main-bg-color', clicked ? '#1A1A1D' : 'white')
         r.style.setProperty('--main-text-color', clicked ? 'white' : 'black')
+        r.style.setProperty('--main-invert-color', clicked ? '1' : '0')
         // console.log(r.style.getPropertyValue('--main-bg-color'))
 
         // localStorage.gay = clicked;
@@ -77,7 +93,6 @@ const Home = ({dataList}) => {
     else {
         hamburgerNav = null;
     }
-
 
     return(
         <div>
@@ -97,29 +112,30 @@ const Home = ({dataList}) => {
             {/*{hamburgerNav}*/}
             <div className="container card" >
                     {/*<h1 className={''}> Hello</h1>*/}
-                    {/*<button onClick={handleClick} className={'light-mode'}> Light Mode</button>*/}
+                    <button onClick={handleClick} className={'light-mode'}> Light Mode</button>
                     <div style={{textAlign:"center"}}>
                         <h1 className={styles.title}><a>Hi there</a></h1>
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
-                        <h2 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak <br/>and I'm a developer </h2>
+                        <h3 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak <br/>and I'm a developer </h3>
                         <div className={'d-inline-block'}>
                         <p className={styles.typewriter} style={{display:"inline-block"}} > Welcome to my virtual portfolio</p>
                         </div>
                     </div>
 
-                <div className={'mt-5'}>
-                    <h3> About Me</h3>
-                    <p> Lorem Ipsums</p>
-                    <img />
+                <div className={'text-center'} >
+                    <div className={'customerGrid'}>
+                        {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
+                            <AboutSection data={data.fields} key={data.sys.id} />
+                        ))}
+                    </div>
                 </div>
 
 
-
-
-                <div className={''} >
+                <div className={'text-center'} >
+                    <h5> Here are some of my favorite projects</h5>
                     <div className={'customerGrid'}>
-                            {dataList.map((data) => (
-                                <ProjectSection data={data.fields} key={data.sys.id} />
+                            {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
+                                <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                             ))}
                     </div>
                 </div>
