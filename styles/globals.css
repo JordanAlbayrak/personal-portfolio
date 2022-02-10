@@ -2,6 +2,9 @@
   --main-bg-color: light grey;
   --main-text-color: black;
   --main-invert-color: 0;
+  --r: 0;
+  --g: 0;
+  --b: 0;
 }
 
 html,
@@ -67,10 +70,11 @@ a {
 
 .content-div{
   position:relative;
+  padding-top: 20px;
   z-index:1;
   width:100%;
-  background-color: var(--main-bg-color);
-  box-shadow: var(--main-bg-color) 0px -10px 30px;
+  box-shadow: var(--main-bg-color) 0 0 50px rgb(0,0,0,0.7);
+  /*background: linear-gradient(0deg, rgba(44,62,80,1) 0%, rgba(44,62,80,1) 25%, rgba(44,62,80,1) 50%, rgba(44,62,80,0.2) 75%, rgba(44,62,80,0) 100%);*/
 }
 
 ul {
@@ -96,6 +100,32 @@ li a.active {
 
 li a:hover:not(.active) {
   background-color: #555;
+  color: white;
+}
+
+#navbar {
+  overflow: auto;
+  background-color: #34495E;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+
+}
+
+#navbar a.active {
+  background-color: #04AA6D;
   color: white;
 }
 

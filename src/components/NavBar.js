@@ -4,21 +4,28 @@ import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 import { Nav, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import {useState} from "react";
 
 
-const NavBar = (prop) => {
+export default function NavBar({isMobile}) {
+    const [isVisible, setIsVisible] = useState(false);
+
+    function onMouseEnter(){
+        setIsVisible(true);
+        console.log("mouse enter");
+    }
+    function onMouseExit(){
+        setIsVisible(false);
+    }
+
     return (
         <div>
-            <div className={'d-inline-block d-flex justify-content-center light-mode'}>
-                <ul className={'nav navbar'}>
-                    <li className={'nav-item'}> About</li>
-                    <li className={'nav-item'}> Projects</li>
-                    <li className={'nav-item'}> Skills</li>
-                    <li className={'nav-item'}> Contact</li>
-                </ul>
+            <div className={'d-flex justify-content-center light-mode'} id={"navbar"}>
+                <a className={'nav-link'}  href={"#about"}>About</a>
+                <a className={'nav-link'} href={"#projects"}>Projects</a>
+                <a className={'nav-link'} href={"#skills"}>Skills</a>
+                <a className={'nav-link'} href={"#contact"}>Contact</a>
             </div>
         </div>
     )
 }
-
-export default NavBar

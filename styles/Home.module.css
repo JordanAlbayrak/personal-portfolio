@@ -49,6 +49,54 @@
   top: 0;
 }
 
+.hideNavBar {
+  /*animation: fade_out 1s ease-in-out 700ms forwards;*/
+  transition: opacity 1s ease-in-out, top 1s ease-in-out;
+  opacity: 0;
+  position: relative;
+  top: 100px;
+}
+
+.hoverShowNavBar {
+  /*animation: fade_in 1s ease-in;*/
+  transition: opacity 1s ease-in-out, top 1s ease-in-out;
+  opacity: 1;
+  position: relative;
+  top: 0;
+}
+
+.hideImg {
+  /*animation: fade_out 1s ease-in-out 700ms forwards;*/
+  transition: opacity 1s ease-out, height 1s ease-in-out;
+  opacity: 0;
+  height: 0;
+  position: relative;
+}
+.showImg {
+  /*animation: fade_out 1s ease-in-out 700ms forwards;*/
+  transition: opacity 1s ease-in , height 1s ease-in-out ;
+  opacity: 1;
+  position: relative;
+}
+
+.hideAbout {
+  /*animation: fade_out 1s ease-in-out 700ms forwards;*/
+  transition: opacity 1s ease-in-out, top 1s ease-in-out, height 1s ease-in-out;
+  opacity: 0;
+  position: relative;
+  top: 50px;
+  height: 0;
+}
+
+.hoverShowAbout {
+  /*animation: fade_in 1s ease-in;*/
+  transition: opacity 1s ease-in-out , top 1s ease-in-out, height 1s ease-in-out;
+  opacity: 1;
+  position: relative;
+  top: 30px;
+  height: 250px;
+}
+
 
 .typewriter{
   overflow: hidden; /* Ensures the content is not revealed until the animation */

@@ -7,6 +7,7 @@ import Head from "next/head";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import MobileDetect from "mobile-detect";
+import Aos from "aos";
 
 const client = require('contentful').createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -29,10 +30,22 @@ const Home = ({dataList}) => {
     const [mounted, setMounted] = useState(false)
     const [hamburger, setHamburger] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
+    const [lightMode, setLightMode] = useState('🌞')
+
 
     useEffect(() => {
         setMounted(true)
+
+        Aos.init({
+            easing:'ease-in-out',
+            once:true,
+            offset:50,
+            duration:1500,
+            disable:window.innerWidth < 768,
+        })
     }, [])
+
 
     useEffect(() => {
         localStorage.setItem('setLightMode', clicked);
@@ -77,13 +90,22 @@ const Home = ({dataList}) => {
     function handleClick() {
         setClicked(!clicked)
         let r = document.querySelector(':root')
-        r.style.setProperty('--main-bg-color', clicked ? '#1A1A1D' : 'white')
+        r.style.setProperty('--main-bg-color', clicked ? '#2C3E50' : '#FBFCFC')
         r.style.setProperty('--main-text-color', clicked ? 'white' : 'black')
         r.style.setProperty('--main-invert-color', clicked ? '1' : '0')
-        // console.log(r.style.getPropertyValue('--main-bg-color'))
+        r.style.setProperty('--r', clicked ? 44 : 251)
+        r.style.setProperty('--g', clicked ? 62 : 252)
+        r.style.setProperty('--b', clicked ? 80 : 252)
 
-        // localStorage.gay = clicked;
-        // localStorage.setItem('gay', clicked);
+        setLightMode(clicked ? '🌜' : '🌞')
+
+    }
+
+    function onMouseEnter(){
+        setIsVisible(true);
+    }
+    function onMouseExit(){
+        setIsVisible(false);
     }
 
     let hamburgerNav;
@@ -96,7 +118,7 @@ const Home = ({dataList}) => {
 
     return(
         <div>
-            <NavBar/>
+            <NavBar isMobile={isMobile}/>
             <Head>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
@@ -110,33 +132,57 @@ const Home = ({dataList}) => {
             </Head>
 
             {/*{hamburgerNav}*/}
-            <div className="container card" >
+
+            {/* Introduction Section */}
+            <div className="container card" data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
                     {/*<h1 className={''}> Hello</h1>*/}
-                    <button onClick={handleClick} className={'light-mode'}> Light Mode</button>
                     <div style={{textAlign:"center"}}>
                         <h1 className={styles.title}><a>Hi there</a></h1>
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
-                        <h3 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak <br/>and I'm a developer </h3>
+                        <h3 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak </h3>
                         <div className={'d-inline-block'}>
                         <p className={styles.typewriter} style={{display:"inline-block"}} > Welcome to my virtual portfolio</p>
                         </div>
                     </div>
+                    <div className={'text-center'}>
+                        <button onClick={handleClick} className={'light-mode border-0'} style={{width:"40px"}}> {lightMode}</button>
+                    </div>
 
-                <div className={'text-center'} >
+                {/* About Section */}
+                <div className={'text-center mt-5'} id={"about"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
                     <div className={'customerGrid'}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
-                            <AboutSection data={data.fields} key={data.sys.id} />
+                            <AboutSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                         ))}
                     </div>
                 </div>
 
-
-                <div className={'text-center'} >
-                    <h5> Here are some of my favorite projects</h5>
-                    <div className={'customerGrid'}>
+                {/* Project Section */}
+                <div className={'text-center'} id={"projects"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
+                    <h5 className={'p-4 content-div'}> Here are some of my favorite projects</h5><br/>
+                    <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
                             {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
                                 <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                             ))}
+                    </div>
+                </div>
+
+                {/* Skills Section */}
+                <div className={'text-center mt-5'} id={"about"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
+                    <div className={'customerGrid'}>
+                        {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
+                            <AboutSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Project Section */}
+                <div className={'text-center'} id={"projects"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
+                    <h5 className={'p-4 content-div'}> Here are some of my favorite projects</h5><br/>
+                    <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+                        {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
+                            <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
+                        ))}
                     </div>
                 </div>
             </div>

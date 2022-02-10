@@ -17,7 +17,7 @@ export default function ProjectSection({ data, isMobile}) {
         setIsVisible(true);
     }
     function onMouseExit(){
-        setIsVisible(false);
+        setTimeout(() =>setIsVisible(false), 1000);
     }
 
 
