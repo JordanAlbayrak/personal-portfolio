@@ -93,6 +93,7 @@ const Home = ({dataList}) => {
         r.style.setProperty('--main-bg-color', clicked ? '#2C3E50' : '#FBFCFC')
         r.style.setProperty('--main-text-color', clicked ? 'white' : 'black')
         r.style.setProperty('--main-invert-color', clicked ? '1' : '0')
+        r.style.setProperty('--main-nav-color', clicked ? '#FBFCFC' : '#34495E')
         r.style.setProperty('--r', clicked ? 44 : 251)
         r.style.setProperty('--g', clicked ? 62 : 252)
         r.style.setProperty('--b', clicked ? 80 : 252)
@@ -159,7 +160,7 @@ const Home = ({dataList}) => {
 
                 {/* Project Section */}
                 <div className={'text-center'} id={"projects"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
-                    <h5 className={'p-4 content-div'}> Here are some of my favorite projects</h5><br/>
+                    <h5 className={' content-div'}> Here are some of my favorite projects</h5><br/>
                     <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
                             {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
                                 <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
