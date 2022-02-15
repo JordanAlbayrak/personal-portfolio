@@ -15,13 +15,13 @@ export default function ProjectSection({ data, isMobile}) {
 
 
     function onMouseEnter(){
-        setIsVisible(!isVisible);
-        setIsMouseIn(!isMouseIn);
+        setIsVisible(true);
+        setIsMouseIn(true);
     }
 
     function onMouseExit(){
-        setIsVisible(!isVisible);
-        setIsMouseIn(!isMouseIn);
+        // setIsVisible(!isVisible);
+        // setIsMouseIn(!isMouseIn);
     }
 
     function showText(){
@@ -32,8 +32,8 @@ export default function ProjectSection({ data, isMobile}) {
         <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit} >
             <div className={"d-flex flex-column align-items-center text-center justify-content-center"} onClick={showText} >
                <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
-                <h3>{data.title}</h3>
-                <h5>{data.language}</h5>
+                <h3 className={''}>{data.title}</h3>
+                <h6 style={{color:'gray'}} >{data.language}</h6>
                 <div className={'d-flex bottom'}>
                     <a href={data.link} target={"_blank"} rel="noopener noreferrer"> <img height={"35"} src={githubIcon} className={'icon_invert_color'} alt={"GithubIcon"}/></a>
                     {data.link2 ? <a href={data.link2} target={"_blank"} rel="noopener noreferrer">

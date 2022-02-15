@@ -2,12 +2,16 @@ import styles from '../../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import ProjectSection from '../components/ProjectSection'
 import AboutSection from '../components/AboutSection'
+import SkillSection from '../components/SkillSection'
+import ContactSection from '../components/ContactSection'
 import {useEffect, useState} from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import MobileDetect from "mobile-detect";
 import Aos from "aos";
+import {Carousel} from "react-responsive-carousel";
+
 
 const client = require('contentful').createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -28,7 +32,6 @@ export const getStaticProps = async () => {
 const Home = ({dataList}) => {
     const [clicked, setClicked] = useState(false)
     const [mounted, setMounted] = useState(false)
-    const [hamburger, setHamburger] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
     const [isVisible, setIsVisible] = useState(false);
     const [lightMode, setLightMode] = useState('🌞')
@@ -52,10 +55,6 @@ const Home = ({dataList}) => {
     }, [clicked])
 
     useEffect(() => {
-        localStorage.setItem('setLightMode', clicked);
-    }, [clicked])
-
-    useEffect(() => {
         const md = new MobileDetect(window.navigator.userAgent);
 
         if (md.mobile() === null) {
@@ -70,12 +69,6 @@ const Home = ({dataList}) => {
 
             function handleTabletChange(e) {
                 // Check if the media query is true
-                if (e.matches) {
-                    setHamburger(true)
-                }
-                else {
-                    setHamburger(false)
-                }
             }
 
             // Register event listener
@@ -109,14 +102,6 @@ const Home = ({dataList}) => {
         setIsVisible(false);
     }
 
-    let hamburgerNav;
-    if (hamburger){
-        hamburgerNav = <h2> test </h2>;
-    }
-    else {
-        hamburgerNav = null;
-    }
-
     return(
         <div>
             <NavBar isMobile={isMobile}/>
@@ -132,15 +117,12 @@ const Home = ({dataList}) => {
                 <title> Jordan Albayrak</title>
             </Head>
 
-            {/*{hamburgerNav}*/}
-
             {/* Introduction Section */}
-            <div className="container card" data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
-                    {/*<h1 className={''}> Hello</h1>*/}
-                    <div style={{textAlign:"center", marginTop:"45px"}}>
+            <div className="container card" id={"about"} >
+                    <div className={'introSection'} style={{textAlign:"center", marginTop:"45px"}}>
                         <h1 className={`${styles.title} ${isMobile ? '' : 'mt-4'}`}><a>Hi there</a></h1>
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
-                        <h3 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak </h3>
+                        <h3 className={''} style={{textAlign:"center"}}> I'm Jordan</h3>
                         <div className={'d-inline-block'}>
                         <p className={styles.typewriter} style={{display:"inline-block"}} > Welcome to my virtual portfolio</p>
                         </div>
@@ -150,8 +132,8 @@ const Home = ({dataList}) => {
                     </div>
 
                 {/* About Section */}
-                <div className={`text-center ${isMobile ? '' : 'mt-5'}`} id={"about"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
-                    <div className={'customerGrid'}>
+                <div className={`text-center pb-5 mb-5 ${isMobile ? '' : 'mt-5'}`}  data-aos="fade" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                    <div className={'customerGrid'} style={{marginTop:"100px"}}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
                             <AboutSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                         ))}
@@ -159,10 +141,10 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Project Section */}
-                <div className={'text-center'} id={"projects"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
-                    <h5 className={'content-div pt-5'}> Here are some of my favorite projects</h5>
-                    <p className={''}> {isMobile ? 'Click' : 'Hover'} for more details</p>
-                    <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+                <div className={'text-center'} id={"projects"} style={{marginTop:"200px"}} data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-duration="1000" >
+                    <h5 className={'content-div pt-5 fw-bold'}> Here are some of my favorite projects</h5>
+                    <p style={{color:"gray"}}> {isMobile ? 'Click' : 'Hover'} for more details</p>
+                    <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="1000" >
                             {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
                                 <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                             ))}
@@ -170,20 +152,21 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Skills Section */}
-                <div className={'text-center mt-5'} id={"skills"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
+                <div className={'text-center'} style={{marginTop:"200px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                    <h5 className={'content-div pt-5 fw-bold'} id={"skills"}> Skills and Workflow</h5>
                     <div className={'customerGrid'}>
-                        {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
-                            <AboutSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
+                        {dataList.filter( x => x.sys.contentType.sys.id === "skills").map((data) => (
+                            <SkillSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                         ))}
                     </div>
                 </div>
 
-                {/* Project Section */}
-                <div className={'text-center'} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
-                    <h5 className={'p-4 content-div'}> Here are some of my favorite projects</h5><br/>
-                    <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-                        {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
-                            <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
+                {/* Contact Section */}
+                <div className={'text-center'} style={{marginTop:"200px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="1000" >
+                    <h5 className={' content-div fw-bold'}> Contact Links</h5><br/>
+                    <div className={''} >
+                        {dataList.filter( x => x.sys.contentType.sys.id === "contact").map((data) => (
+                            <ContactSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                         ))}
                     </div>
                 </div>

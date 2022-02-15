@@ -153,13 +153,29 @@ li a:hover:not(.active) {
 @media screen and (max-width: 530px) {
 
   .card{
-    width: 300px;
+    width: 250px;
   }
 
   .container{
     min-height: 130vh
   }
+  .introSection{
+    font-size: 0.7rem;
+  }
+
+  #navbar{
+    margin: 0 0 0 0;
+  }
+
+  #navbar a{
+    font-size: 0.9rem;
+    padding: 13px;
+  }
+
+
 
 }
+
+
 
 

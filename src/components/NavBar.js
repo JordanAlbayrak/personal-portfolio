@@ -20,7 +20,7 @@ export default function NavBar({isMobile}) {
 
     return (
         <div>
-            <div className={`d-flex justify-content-center light-mode ${isMobile ? 'fixed-bottom' : 'fixed-top'}`} data-aos={"example-anim2"} id={"navbar"}>
+            <div className={`d-flex justify-content-center light-mode ${isMobile ? 'fixed-bottom' : 'fixed-top'}`} id={"navbar"}>
                 <a className={'nav-link'}  href={"#about"}>About</a>
                 <a className={'nav-link'} href={"#projects"}>Projects</a>
                 <a className={'nav-link'} href={"#skills"}>Skills</a>

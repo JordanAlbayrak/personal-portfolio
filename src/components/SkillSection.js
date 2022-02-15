@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useState} from "react";
+import {Carousel} from "react-bootstrap";
 
 
 export default function ProjectSection({ data, isMobile}) {
@@ -25,15 +26,9 @@ export default function ProjectSection({ data, isMobile}) {
         <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit} >
             <div className={"d-flex flex-column align-items-center text-center justify-content-center"} >
                 <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
-                    <h3>{data.title}</h3>
-                    <h5>{data.language}</h5>
-                    <div className={'d-flex bottom'}>
-                        <a href={data.link} target={"_blank"} rel="noopener noreferrer"> <img height={"35"} src={githubIcon} className={'icon_invert_color'} alt={"GithubIcon"}/></a>
-                        {data.link2 ? <a href={data.link2} target={"_blank"} rel="noopener noreferrer">
-                            <img style={{paddingLeft:"10%"}} height={"35"} src={data.link2 === reactUrl ? reactIcon : youtubeIcon } alt={"YoutubeIcon"}/></a> : null}
-                    </div>
+                    <h3>{data.skillTitle}</h3>
                 </div>
-                <p style={{position:'relative', zIndex:'0', marginTop:'20px'}} className={`${isMobile ? '' : styles.hide} ${isVisible ? styles.hoverShow : ''}`}>{data.description}</p>
+                <p data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600" data-aos-delay="1000" style={{position:'relative', zIndex:'0', marginTop:'20px'}}>{data.skillDescription}</p>
             </div>
         </section>
 
