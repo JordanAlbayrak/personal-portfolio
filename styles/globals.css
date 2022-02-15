@@ -1,5 +1,5 @@
 :root {
-  --main-bg-color: light grey;
+  --main-bg-color: #E3EEF3;
   --main-text-color: black;
   --main-nav-color: #34495E;
   --main-invert-color: 0;
@@ -155,8 +155,11 @@ li a:hover:not(.active) {
   .card{
     width: 300px;
   }
+
   .container{
     min-height: 130vh
   }
+
 }
+
 

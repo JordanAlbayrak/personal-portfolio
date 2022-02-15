@@ -11,19 +11,26 @@ export default function ProjectSection({ data, isMobile}) {
     const reactIcon = 'https://images.ctfassets.net/w84vaxpfiq86/1C4x6tq2SAKDbOz3TEqYxy/1abec616f274e4397cf686d580d19686/reactIcon.png';
     const reactUrl = 'https://iot-final-project-front-end.vercel.app/login';
     const [isVisible, setIsVisible] = useState(false);
+    const [isMouseIn, setIsMouseIn] = useState(false);
 
 
     function onMouseEnter(){
-        setIsVisible(true);
-    }
-    function onMouseExit(){
-        setTimeout(() =>setIsVisible(false), 1000);
+        setIsVisible(!isVisible);
+        setIsMouseIn(!isMouseIn);
     }
 
+    function onMouseExit(){
+        setIsVisible(!isVisible);
+        setIsMouseIn(!isMouseIn);
+    }
+
+    function showText(){
+        setIsVisible(!isVisible);
+    }
 
     return(
         <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit} >
-            <div className={"d-flex flex-column align-items-center text-center justify-content-center"} >
+            <div className={"d-flex flex-column align-items-center text-center justify-content-center"} onClick={showText} >
                <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
                 <h3>{data.title}</h3>
                 <h5>{data.language}</h5>
@@ -33,7 +40,7 @@ export default function ProjectSection({ data, isMobile}) {
                         <img style={{paddingLeft:"10%"}} height={"35"} src={data.link2 === reactUrl ? reactIcon : youtubeIcon } alt={"YoutubeIcon"}/></a> : null}
                 </div>
                </div>
-                <p style={{position:'relative', zIndex:'0', marginTop:'20px'}} className={`${isMobile ? '' : styles.hide} ${isVisible ? styles.hoverShow : ''}`}>{data.description}</p>
+                <p style={{position:'relative', zIndex:'0', marginTop:'20px'}} className={`${isMobile ? styles.hide : styles.hide} ${isVisible ? styles.hoverShow : ''}`}>{data.description}</p>
             </div>
         </section>
 

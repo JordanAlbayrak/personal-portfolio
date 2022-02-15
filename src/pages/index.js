@@ -90,7 +90,7 @@ const Home = ({dataList}) => {
     function handleClick() {
         setClicked(!clicked)
         let r = document.querySelector(':root')
-        r.style.setProperty('--main-bg-color', clicked ? '#2C3E50' : '#FBFCFC')
+        r.style.setProperty('--main-bg-color', clicked ? '#2C3E50' : '#E3EEF3')
         r.style.setProperty('--main-text-color', clicked ? 'white' : 'black')
         r.style.setProperty('--main-invert-color', clicked ? '1' : '0')
         r.style.setProperty('--main-nav-color', clicked ? '#FBFCFC' : '#34495E')
@@ -137,8 +137,8 @@ const Home = ({dataList}) => {
             {/* Introduction Section */}
             <div className="container card" data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
                     {/*<h1 className={''}> Hello</h1>*/}
-                    <div style={{textAlign:"center"}}>
-                        <h1 className={styles.title}><a>Hi there</a></h1>
+                    <div style={{textAlign:"center", marginTop:"45px"}}>
+                        <h1 className={`${styles.title} ${isMobile ? '' : 'mt-4'}`}><a>Hi there</a></h1>
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
                         <h3 className={''} style={{textAlign:"center"}}> I'm Jordan Albayrak </h3>
                         <div className={'d-inline-block'}>
@@ -150,7 +150,7 @@ const Home = ({dataList}) => {
                     </div>
 
                 {/* About Section */}
-                <div className={'text-center mt-5'} id={"about"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
+                <div className={`text-center ${isMobile ? '' : 'mt-5'}`} id={"about"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
                     <div className={'customerGrid'}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
                             <AboutSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
@@ -160,7 +160,8 @@ const Home = ({dataList}) => {
 
                 {/* Project Section */}
                 <div className={'text-center'} id={"projects"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
-                    <h5 className={' content-div'}> Here are some of my favorite projects</h5><br/>
+                    <h5 className={'content-div pt-5'}> Here are some of my favorite projects</h5>
+                    <p className={''}> {isMobile ? 'Click' : 'Hover'} for more details</p>
                     <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
                             {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
                                 <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
@@ -169,7 +170,7 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Skills Section */}
-                <div className={'text-center mt-5'} id={"about"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
+                <div className={'text-center mt-5'} id={"skills"} data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600">
                     <div className={'customerGrid'}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "about").map((data) => (
                             <AboutSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
@@ -178,7 +179,7 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Project Section */}
-                <div className={'text-center'} id={"projects"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
+                <div className={'text-center'} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="600" >
                     <h5 className={'p-4 content-div'}> Here are some of my favorite projects</h5><br/>
                     <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
                         {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
