@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ProjectSection from '../components/ProjectSection'
 import AboutSection from '../components/AboutSection'
 import SkillSection from '../components/SkillSection'
+import WorkflowSection from '../components/WorkflowSection'
 import ContactSection from '../components/ContactSection'
 import {useEffect, useState} from "react";
 import Head from "next/head";
@@ -153,17 +154,23 @@ const Home = ({dataList}) => {
 
                 {/* Skills Section */}
                 <div className={'text-center'} style={{marginTop:"200px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
-                    <h5 className={'content-div pt-5 fw-bold'} id={"skills"}> Skills and Workflow</h5>
+                    <h5 className={'content-div pt-5 fw-bold'} id={"skills"}>Skills</h5>
+                    <SkillSection/>
+                </div>
+
+                {/* Workflow Section */}
+                <div className={'text-center'} style={{marginTop:"200px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                    <h5 className={'content-div pt-5 fw-bold'} id={"workflow"}>Workflow</h5>
                     <div className={'customerGrid'}>
-                        {dataList.filter( x => x.sys.contentType.sys.id === "skills").map((data) => (
-                            <SkillSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
+                        {dataList.filter( x => x.sys.contentType.sys.id === "workflow").map((data) => (
+                            <WorkflowSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
                         ))}
                     </div>
                 </div>
 
                 {/* Contact Section */}
                 <div className={'text-center'} style={{marginTop:"200px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="1000" >
-                    <h5 className={' content-div fw-bold'}> Contact Links</h5><br/>
+                    <h5 className={' content-div fw-bold'}> Wanna talk about life?</h5><br/>
                     <div className={''} >
                         {dataList.filter( x => x.sys.contentType.sys.id === "contact").map((data) => (
                             <ContactSection isMobile={isMobile} data={data.fields} key={data.sys.id} />

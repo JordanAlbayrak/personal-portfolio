@@ -129,6 +129,20 @@ li a:hover:not(.active) {
   color: white;
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.moving_icons{
+
+  animation: marquee 10s linear infinite;
+  top: 5px;
+  transform: translate(0,-50%);
+  position: absolute;
+  left: 0;
+}
+
 
 @media screen and (max-width: 1200px) {
 
