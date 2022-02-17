@@ -124,11 +124,11 @@ const Home = ({dataList}) => {
 
     useEffect(() => {
         if (mounted) {
-            if (localStorage.getItem('setLightMode') === 'true') {
-                setLightMode('🌞')
-            } else {
-                setLightMode('🌙')
-            }
+            // if (localStorage.getItem('setLightMode') === 'true') {
+            //     setLightMode('🌜')
+            // } else {
+            //     setLightMode('🌞')
+            // }
         }
     }, [mounted])
 

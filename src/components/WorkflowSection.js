@@ -28,7 +28,7 @@ export default function ProjectSection({ data, isMobile}) {
                 <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
                     <h3>{data.workflowTitle}</h3>
                 </div>
-                <p data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600" data-aos-delay="1000" style={{position:'relative', zIndex:'0', marginTop:'20px'}}>{data.workflowDescription}</p>
+                <p data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600" data-aos-delay="600" style={{position:'relative', zIndex:'0', marginTop:'20px'}}>{data.workflowDescription}</p>
             </div>
         </section>
 
