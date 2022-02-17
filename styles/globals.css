@@ -129,18 +129,17 @@ li a:hover:not(.active) {
   color: white;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .moving_icons{
-
-  animation: marquee 10s linear infinite;
-  top: 5px;
+  animation: skills_animation 20s linear infinite;
+  top: 20px;
   transform: translate(0,-50%);
   position: absolute;
   left: 0;
+}
+
+@keyframes skills_animation {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 
@@ -160,6 +159,14 @@ li a:hover:not(.active) {
 
   ul {
     width: 250px;
+  }
+
+  .moving_icons{
+    animation: skills_animation 20s linear infinite;
+    top: 20px;
+    transform: translate(0,-50%);
+    position: absolute;
+    left: 0;
   }
 
 }

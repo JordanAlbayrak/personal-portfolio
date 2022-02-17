@@ -19,13 +19,13 @@ const client = require('contentful').createClient({
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-const widthThresh_holdForSidebar = "(max-width: 768px)";
-
 export const getStaticProps = async () => {
     const data = await client.getEntries();
+    // const icon_data = await client.getAssets();
+
     return {
         props: {
-            dataList: data.items
+            dataList: data.items,
         }
     }
 }
@@ -34,8 +34,10 @@ const Home = ({dataList}) => {
     const [clicked, setClicked] = useState(false)
     const [mounted, setMounted] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false)
     const [lightMode, setLightMode] = useState('🌞')
+    const [img_height, setImg_height] = useState('70px')
+    const [img_width, setImg_width] = useState(10)
 
 
     useEffect(() => {
@@ -51,12 +53,16 @@ const Home = ({dataList}) => {
     }, [])
 
 
+
     useEffect(() => {
         localStorage.setItem('setLightMode', clicked);
     }, [clicked])
 
     useEffect(() => {
         const md = new MobileDetect(window.navigator.userAgent);
+        const rez = document.documentElement.clientWidth;
+        console.log(rez);
+        console.log(window.innerWidth);
 
         if (md.mobile() === null) {
             setIsMobile(false)
@@ -64,21 +70,67 @@ const Home = ({dataList}) => {
             setIsMobile(true)
         }
 
+        setImg_height('70px')
+        setImg_width(Number(rez) >= 1200 ? 10 : 20)
+
         if (mounted) {
-            // Create a condition that targets viewports at least 768px wide
-            const mediaQuery = window.matchMedia(widthThresh_holdForSidebar);
 
-            function handleTabletChange(e) {
-                // Check if the media query is true
-            }
+            // const mediaQuery_1200_min = window.matchMedia('(min-width: 1200px)')
+            // const mediaQuery_786_min = window.matchMedia('(min-width: 768px)')
+            // const mediaQuery_500_min = window.matchMedia('(min-width: 500px)')
+            // const mediaQuery_300_min = window.matchMedia('(min-width: 301-px)')
+            //
+            // const mediaQuery_1200_max = window.matchMedia('(max-width: 1200px)')
+            // const mediaQuery_786_max = window.matchMedia('(max-width: 768px)')
+            // const mediaQuery_500_max = window.matchMedia('(max-width: 500px)')
+            // const mediaQuery_300_max = window.matchMedia('(max-width: 300-px)')
+            //
+            // function screenResolutionChange(mediaQuery_1200_min, mediaQuery_786_min, mediaQuery_500_min, mediaQuery_300_min, mediaQuery_1200_max, mediaQuery_786_max, mediaQuery_500_max, mediaQuery_300_max) {
+            //     console.log(document.documentElement.clientWidth);
+            //
+            //     if (mediaQuery_1200_min.matches) {
+            //         setImg_height('70px')
+            //         setImg_width(10)
+            //     }
+            //     else if (mediaQuery_1200_max.matches && mediaQuery_786_min.matches) {
+            //         setImg_height('70px')
+            //         setImg_width(12)
+            //     }
+            //     else if (mediaQuery_786_max.matches && mediaQuery_500_min.matches) {
+            //         setImg_height('60px')
+            //         setImg_width(20)
+            //     }
+            //     else if (mediaQuery_500_max.matches && mediaQuery_300_min.matches) {
+            //         setImg_height('50px')
+            //         setImg_width(20)
+            //     }
+            //     else if (mediaQuery_300_max.matches) {
+            //         setImg_height('40px')
+            //         setImg_width(20)
+            //     }
+            // }
+            //
+            // mediaQuery_1200_min.addListener(screenResolutionChange)
+            // mediaQuery_786_min.addListener(screenResolutionChange)
+            // mediaQuery_500_min.addListener(screenResolutionChange)
+            // mediaQuery_300_min.addListener(screenResolutionChange)
+            // mediaQuery_786_max.addListener(screenResolutionChange)
+            // mediaQuery_500_max.addListener(screenResolutionChange)
+            // mediaQuery_300_max.addListener(screenResolutionChange)
+            // screenResolutionChange(mediaQuery_1200_min, )
 
-            // Register event listener
-            mediaQuery.addEventListener("change", handleTabletChange)
-
-            // Initial check
-            handleTabletChange(mediaQuery)
         }
     }, [ ])
+
+    useEffect(() => {
+        if (mounted) {
+            if (localStorage.getItem('setLightMode') === 'true') {
+                setLightMode('🌞')
+            } else {
+                setLightMode('🌙')
+            }
+        }
+    }, [mounted])
 
 
     function handleClick() {
@@ -120,10 +172,10 @@ const Home = ({dataList}) => {
 
             {/* Introduction Section */}
             <div className="container card" id={"about"} >
-                    <div className={'introSection'} style={{textAlign:"center", marginTop:"45px"}}>
+                    <div className={'introSection'} style={{textAlign:"center", marginTop:"60px"}}>
                         <h1 className={`${styles.title} ${isMobile ? '' : 'mt-4'}`}><a>Hi there</a></h1>
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
-                        <h3 className={''} style={{textAlign:"center"}}> I'm Jordan</h3>
+                        <h3 className={'mb-3'} style={{textAlign:"center", color:""}}> I'm Jordan</h3>
                         <div className={'d-inline-block'}>
                         <p className={styles.typewriter} style={{display:"inline-block"}} > Welcome to my virtual portfolio</p>
                         </div>
@@ -144,7 +196,7 @@ const Home = ({dataList}) => {
                 {/* Project Section */}
                 <div className={'text-center'} id={"projects"} style={{marginTop:"200px"}} data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-duration="1000" >
                     <h5 className={'content-div pt-5 fw-bold'}> Here are some of my favorite projects</h5>
-                    <p style={{color:"gray"}}> {isMobile ? 'Click' : 'Hover'} for more details</p>
+                    <p style={{color:"gray"}}> {isMobile ? 'Click' : 'Hover'} a title for more details</p>
                     <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="1000" >
                             {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
                                 <ProjectSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
@@ -153,14 +205,14 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Skills Section */}
-                <div className={'text-center'} style={{marginTop:"200px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
-                    <h5 className={'content-div pt-5 fw-bold'} id={"skills"}>Skills</h5>
-                    <SkillSection/>
+                <div className={'text-center pb-2'} id={"skills"} style={{marginTop:"200px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                    <h5 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h5>
+                    <SkillSection img_width={img_width} img_height={img_height} />
                 </div>
 
                 {/* Workflow Section */}
                 <div className={'text-center'} style={{marginTop:"200px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
-                    <h5 className={'content-div pt-5 fw-bold'} id={"workflow"}>Workflow</h5>
+                    <h5 className={'content-div fw-bold'} id={"workflow"}>My standard workflow</h5>
                     <div className={'customerGrid'}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "workflow").map((data) => (
                             <WorkflowSection isMobile={isMobile} data={data.fields} key={data.sys.id} />

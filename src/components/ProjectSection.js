@@ -12,6 +12,8 @@ export default function ProjectSection({ data, isMobile}) {
     const reactUrl = 'https://iot-final-project-front-end.vercel.app/login';
     const [isVisible, setIsVisible] = useState(false);
     const [isMouseIn, setIsMouseIn] = useState(false);
+    const [img_height, setImg_height] = useState('70px');
+    const [img_width, setImg_width] = useState(`${10*50}%`);
 
 
     function onMouseEnter(){
