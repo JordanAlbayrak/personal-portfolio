@@ -137,6 +137,7 @@ li a:hover:not(.active) {
   left: 0;
 }
 
+
 @keyframes skills_animation {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

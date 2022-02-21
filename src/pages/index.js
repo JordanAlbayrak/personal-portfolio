@@ -74,7 +74,6 @@ const Home = ({dataList}) => {
         setImg_width(Number(rez) >= 1200 ? 10 : 20)
 
         if (mounted) {
-
             // const mediaQuery_1200_min = window.matchMedia('(min-width: 1200px)')
             // const mediaQuery_786_min = window.matchMedia('(min-width: 768px)')
             // const mediaQuery_500_min = window.matchMedia('(min-width: 500px)')
@@ -170,6 +169,7 @@ const Home = ({dataList}) => {
                 <title> Jordan Albayrak</title>
             </Head>
 
+
             {/* Introduction Section */}
             <div className="container card" id={"about"} >
                     <div className={'introSection'} style={{textAlign:"center", marginTop:"60px"}}>
@@ -183,6 +183,7 @@ const Home = ({dataList}) => {
                     <div className={'text-center'}>
                         <button onClick={handleClick} className={'light-mode border-0'} style={{width:"40px"}}> {lightMode}</button>
                     </div>
+
 
                 {/* About Section */}
                 <div className={`text-center pb-5 mb-5 ${isMobile ? '' : 'mt-5'}`}  data-aos="fade" data-aos-easing="ease-in-out" data-aos-duration="1000">
@@ -205,9 +206,12 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Skills Section */}
-                <div className={'text-center pb-2'} id={"skills"} style={{marginTop:"200px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
-                    <h5 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h5>
-                    <SkillSection img_width={img_width} img_height={img_height} />
+                <div id={"skills"}>
+                    <div className={'text-center pb-2'} style={{marginTop:"200px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                        <h5 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h5>
+                        <a href={dataList.map(x => x.fields)[0].cvLinkEnglish} className={'text-decoration-none'} target={'__blank'} rel={'noreferrer noopener'}><p> Download my CV!</p></a>
+                        <SkillSection img_width={img_width} img_height={img_height} />
+                    </div>
                 </div>
 
                 {/* Workflow Section */}
@@ -221,8 +225,8 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Contact Section */}
-                <div className={'text-center'} style={{marginTop:"200px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="1000" >
-                    <h5 className={' content-div fw-bold'}> Wanna talk about life?</h5><br/>
+                <div className={'text-center'} style={{marginTop:"200px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="500" >
+                    <h5 className={' content-div fw-bold'}> Contact me here</h5><br/>
                     <div className={''} >
                         {dataList.filter( x => x.sys.contentType.sys.id === "contact").map((data) => (
                             <ContactSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
