@@ -209,7 +209,7 @@ const Home = ({dataList}) => {
                 <div id={"skills"}>
                     <div className={'text-center pb-2'} style={{marginTop:"200px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
                         <h5 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h5>
-                        <a href={dataList.map(x => x.fields)[0].cvLinkEnglish} className={'text-decoration-none'} target={'__blank'} rel={'noreferrer noopener'}><p> Download my CV!</p></a>
+                        <a href={dataList.filter( x => x.sys.contentType.sys.id === "skills").map(x => x.fields)[0].cvLinkEnglish} className={'text-decoration-none'} target={'__blank'} rel={'noreferrer noopener'}><p> Download my CV!</p></a>
                         <SkillSection img_width={img_width} img_height={img_height} />
                     </div>
                 </div>
