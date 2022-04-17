@@ -1,8 +1,8 @@
 :root {
-  --main-bg-color: #E3EEF3;
-  --main-text-color: black;
-  --main-nav-color: #34495E;
-  --main-invert-color: 0;
+  --main-bg-color: #2C3E50; /* #E3EEF3 */
+  --main-text-color: white; /* black */
+  --main-nav-color: #FBFCFC; /* #34495E */
+  --main-invert-color: 1; /* 0 */
   --r: 0;
   --g: 0;
   --b: 0;

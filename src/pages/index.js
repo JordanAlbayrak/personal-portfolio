@@ -35,7 +35,7 @@ const Home = ({dataList}) => {
     const [mounted, setMounted] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
     const [isVisible, setIsVisible] = useState(false)
-    const [lightMode, setLightMode] = useState('🌞')
+    const [lightMode, setLightMode] = useState('🌜')
     const [img_height, setImg_height] = useState('70px')
     const [img_width, setImg_width] = useState(10)
 
