@@ -8,7 +8,7 @@ import {useEffect, useState} from "react";
 export default function ProjectSection({ data, isMobile}) {
     const [isVisible, setIsVisible] = useState(false);
     const [isMouseIn, setIsMouseIn] = useState(false);
-    const selfie = 'https://images.ctfassets.net/w84vaxpfiq86/1IohuIahw9L98rBuqmEqwV/d5b164fef2477123f4417ce9508590a3/jordan_nobackground.png';
+    const selfie = 'https://images.ctfassets.net/w84vaxpfiq86/1IohuIahw9L98rBuqmEqwV/b517c58c7c4b36e0886c79e6bc475542/long_jordan_nobackground3.png';
 
     function onMouseEnter(){
         setIsVisible(!isVisible);
