@@ -21,7 +21,6 @@ const client = require('contentful').createClient({
 
 export const getStaticProps = async () => {
     const data = await client.getEntries();
-    // const icon_data = await client.getAssets();
 
     return {
         props: {
@@ -74,63 +73,8 @@ const Home = ({dataList}) => {
         setImg_width(Number(rez) >= 1200 ? 10 : 20)
 
         if (mounted) {
-            // const mediaQuery_1200_min = window.matchMedia('(min-width: 1200px)')
-            // const mediaQuery_786_min = window.matchMedia('(min-width: 768px)')
-            // const mediaQuery_500_min = window.matchMedia('(min-width: 500px)')
-            // const mediaQuery_300_min = window.matchMedia('(min-width: 301-px)')
-            //
-            // const mediaQuery_1200_max = window.matchMedia('(max-width: 1200px)')
-            // const mediaQuery_786_max = window.matchMedia('(max-width: 768px)')
-            // const mediaQuery_500_max = window.matchMedia('(max-width: 500px)')
-            // const mediaQuery_300_max = window.matchMedia('(max-width: 300-px)')
-            //
-            // function screenResolutionChange(mediaQuery_1200_min, mediaQuery_786_min, mediaQuery_500_min, mediaQuery_300_min, mediaQuery_1200_max, mediaQuery_786_max, mediaQuery_500_max, mediaQuery_300_max) {
-            //     console.log(document.documentElement.clientWidth);
-            //
-            //     if (mediaQuery_1200_min.matches) {
-            //         setImg_height('70px')
-            //         setImg_width(10)
-            //     }
-            //     else if (mediaQuery_1200_max.matches && mediaQuery_786_min.matches) {
-            //         setImg_height('70px')
-            //         setImg_width(12)
-            //     }
-            //     else if (mediaQuery_786_max.matches && mediaQuery_500_min.matches) {
-            //         setImg_height('60px')
-            //         setImg_width(20)
-            //     }
-            //     else if (mediaQuery_500_max.matches && mediaQuery_300_min.matches) {
-            //         setImg_height('50px')
-            //         setImg_width(20)
-            //     }
-            //     else if (mediaQuery_300_max.matches) {
-            //         setImg_height('40px')
-            //         setImg_width(20)
-            //     }
-            // }
-            //
-            // mediaQuery_1200_min.addListener(screenResolutionChange)
-            // mediaQuery_786_min.addListener(screenResolutionChange)
-            // mediaQuery_500_min.addListener(screenResolutionChange)
-            // mediaQuery_300_min.addListener(screenResolutionChange)
-            // mediaQuery_786_max.addListener(screenResolutionChange)
-            // mediaQuery_500_max.addListener(screenResolutionChange)
-            // mediaQuery_300_max.addListener(screenResolutionChange)
-            // screenResolutionChange(mediaQuery_1200_min, )
-
         }
     }, [ ])
-
-    useEffect(() => {
-        if (mounted) {
-            // if (localStorage.getItem('setLightMode') === 'true') {
-            //     setLightMode('🌜')
-            // } else {
-            //     setLightMode('🌞')
-            // }
-        }
-    }, [mounted])
-
 
     function handleClick() {
         setClicked(!clicked)
@@ -195,7 +139,7 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Project Section */}
-                <div className={'text-center'} id={"projects"} style={{marginTop:"200px"}} data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-duration="1000" >
+                <div className={'text-center'} id={"projects"} style={{marginTop:"100px"}} data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-duration="1000" >
                     <h5 className={'content-div pt-5 fw-bold'}> Here are some of my favorite projects</h5>
                     <p style={{color:"gray"}}> {isMobile ? 'Click' : 'Hover'} a title for more details</p>
                     <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="1000" >
@@ -207,7 +151,7 @@ const Home = ({dataList}) => {
 
                 {/* Skills Section */}
                 <div id={"skills"}>
-                    <div className={'text-center pb-2'} style={{marginTop:"200px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                    <div className={'text-center pb-2'} style={{marginTop:"150px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
                         <h5 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h5>
                         <a href={dataList.filter( x => x.sys.contentType.sys.id === "skills").map(x => x.fields)[0].cvLinkEnglish} className={'text-decoration-none'} target={'__blank'} rel={'noreferrer noopener'}><p> Download my CV!</p></a>
                         <SkillSection img_width={img_width} img_height={img_height} />
@@ -215,7 +159,7 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Workflow Section */}
-                <div className={'text-center'} style={{marginTop:"200px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
+                <div className={'text-center'} style={{marginTop:"150px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
                     <h5 className={'content-div fw-bold'} id={"workflow"}>My standard workflow</h5>
                     <div className={'customerGrid'}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "workflow").map((data) => (
@@ -225,7 +169,7 @@ const Home = ({dataList}) => {
                 </div>
 
                 {/* Contact Section */}
-                <div className={'text-center'} style={{marginTop:"200px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="500" >
+                <div className={'text-center'} style={{marginTop:"150px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="500" >
                     <h5 className={' content-div fw-bold'}> Contact me here</h5><br/>
                     <div className={''} >
                         {dataList.filter( x => x.sys.contentType.sys.id === "contact").map((data) => (

@@ -8,7 +8,7 @@ import {useEffect, useState} from "react";
 export default function ProjectSection({ data, isMobile}) {
     const [isVisible, setIsVisible] = useState(false);
     const [isMouseIn, setIsMouseIn] = useState(false);
-    const selfie = 'https://images.ctfassets.net/w84vaxpfiq86/1IohuIahw9L98rBuqmEqwV/b517c58c7c4b36e0886c79e6bc475542/long_jordan_nobackground3.png';
+    const selfie = 'https://images.ctfassets.net/w84vaxpfiq86/1IohuIahw9L98rBuqmEqwV/23d49e31f95381fd66f5a982dd4381a9/long_jordan_nobackground4.png';
 
     function onMouseEnter(){
         setIsVisible(!isVisible);
@@ -18,21 +18,6 @@ export default function ProjectSection({ data, isMobile}) {
     function showImage(){
             setIsVisible(!isVisible);
     }
-    // function onMouseExit(){
-    //     setIsMouseIn(false);
-    //     setIsVisible(false);
-    // }
-
-    // useEffect(() => {
-    //     if(isMouseIn === false && isVisible === true){
-    //         setTimeout(() => {
-    //             if (isMouseIn === false) {
-    //                 setIsVisible(false)
-    //             }
-    //         }, 2000);
-    //     }
-    //
-    // }, [isMouseIn]);
 
     return(
         <section className={"card"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} >
@@ -44,7 +29,7 @@ export default function ProjectSection({ data, isMobile}) {
                     {/*<h5>{data.origin}</h5>*/}
                 </div>
                 <p className={`${isMobile ? styles.hideAbout : styles.hideAbout} ${isVisible ? styles.hoverShowAbout : ''}`} onClick={showImage}>{data.aboutDescription}</p>
-                <img className={`${isMobile ? styles.showImg : styles.showImg } ${isVisible ? styles.hideImg : styles.showImg}`} onClick={showImage}  height={"250"} src={selfie} alt={"Selfie"}/>
+                <img className={`${isMobile ? styles.showImg : styles.showImg } ${isVisible ? styles.hideImg : styles.showImg}`} onClick={showImage}  height={"450"} src={selfie} alt={"Selfie"}/>
                 <a href={data.instagram} target={"_blank"} rel="noopener noreferrer"> </a>
             </div>
         </section>
