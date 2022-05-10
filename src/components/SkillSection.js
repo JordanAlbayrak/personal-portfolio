@@ -6,7 +6,7 @@ import {useState} from "react";
 import {Carousel} from "react-bootstrap";
 
 
-export default function ProjectSection({img_width, img_height}) {
+export default function ProjectSection({img_width, img_height, isMobile}) {
     const githubIcon = 'https://images.ctfassets.net/w84vaxpfiq86/2IqPsUDmPigoO0y5ehjgpq/c1707dd15dcd20d883e005574192f7f5/github-original-wordmark.svg';
     const nextjsIcon = 'https://images.ctfassets.net/w84vaxpfiq86/6Yw9EpKwh0F7N89f9VDsVy/6e1030bc4f5d0db92e9bb3992eca72dc/nextjs-original-wordmark.svg';
     const firebaseIcon = 'https://images.ctfassets.net/w84vaxpfiq86/6WATILWa104ddgb3qWa4gf/37b560ccfb53bbf3c283331362df480d/firebase-plain-wordmark.svg';
@@ -33,7 +33,7 @@ export default function ProjectSection({img_width, img_height}) {
     return(
 
         <div className={'w-100 position-relative overflow-hidden mx-auto'} style={{height:'110px',borderRadius:'20px', maxWidth:"1100px", minWidth:"1100px"}}>
-                <div className="d-flex moving_icons" style={{width: `${img_width*50}%`}}>
+                <div className="d-flex moving_icons" style={{width: `${img_width* (isMobile ? 30 : 50) }%`}}>
                     <div className="d-flex w-50 justify-content-around logo">
 
                         <img src={nextjsIcon} alt="nextjsIcon" className={'icon_invert_color'} height={img_height}/>

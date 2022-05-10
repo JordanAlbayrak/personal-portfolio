@@ -140,7 +140,7 @@ const Home = ({dataList}) => {
 
                 {/* Project Section */}
                 <div className={'text-center'} id={"projects"} style={{marginTop:"100px"}} data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-duration="1000" >
-                    <h5 className={'content-div pt-5 fw-bold'}> Here are some of my favorite projects</h5>
+                    <h3 className={'content-div pt-5 fw-bold'}> Here are some of my favorite projects</h3>
                     <p style={{color:"gray"}}> {isMobile ? 'Click' : 'Hover'} a title for more details</p>
                     <div className={'customerGrid'} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="1000" >
                             {dataList.filter( x => x.sys.contentType.sys.id === "projects").map((data) => (
@@ -152,15 +152,15 @@ const Home = ({dataList}) => {
                 {/* Skills Section */}
                 <div id={"skills"}>
                     <div className={'text-center pb-2'} style={{marginTop:"150px", overflowX:'hidden'}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
-                        <h5 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h5>
+                        <h3 className={'content-div mb-4 fw-bold'} id={"skills"}>What I have worked with</h3>
                         <a href={dataList.filter( x => x.sys.contentType.sys.id === "skills").map(x => x.fields)[0].cvLinkEnglish} className={'text-decoration-none'} target={'__blank'} rel={'noreferrer noopener'}><p> Download my CV!</p></a>
-                        <SkillSection img_width={img_width} img_height={img_height} />
+                        <SkillSection img_width={img_width} img_height={img_height} isMobile={isMobile} />
                     </div>
                 </div>
 
                 {/* Workflow Section */}
                 <div className={'text-center'} style={{marginTop:"150px"}} data-aos="zoom-out" data-aos-easing="ease-in-out" data-aos-duration="1000">
-                    <h5 className={'content-div fw-bold'} id={"workflow"}>My standard workflow</h5>
+                    <h3 className={'content-div fw-bold'} id={"workflow"}>My standard workflow</h3>
                     <div className={'customerGrid'}>
                         {dataList.filter( x => x.sys.contentType.sys.id === "workflow").map((data) => (
                             <WorkflowSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
@@ -170,7 +170,7 @@ const Home = ({dataList}) => {
 
                 {/* Contact Section */}
                 <div className={'text-center'} style={{marginTop:"150px"}} id={"contact"} data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="500" >
-                    <h5 className={' content-div fw-bold'}> Contact me here</h5><br/>
+                    <h3 className={' content-div fw-bold'}> Contact</h3><br/>
                     <div className={''} >
                         {dataList.filter( x => x.sys.contentType.sys.id === "contact").map((data) => (
                             <ContactSection isMobile={isMobile} data={data.fields} key={data.sys.id} />

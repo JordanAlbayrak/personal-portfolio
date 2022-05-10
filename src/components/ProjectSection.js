@@ -34,7 +34,7 @@ export default function ProjectSection({ data, isMobile}) {
         <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit} >
             <div className={"d-flex flex-column align-items-center text-center justify-content-center"} onClick={showText} >
                <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
-                <h3 className={''}>{data.title}</h3>
+                <h4 className={''}>{data.title}</h4>
                 <h6 style={{color:'gray'}} >{data.language}</h6>
                 <div className={'d-flex bottom'}>
                     <a href={data.link} target={"_blank"} rel="noopener noreferrer"> <img height={"35"} src={githubIcon} className={'icon_invert_color'} alt={"GithubIcon"}/></a>

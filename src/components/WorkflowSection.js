@@ -26,7 +26,7 @@ export default function ProjectSection({ data, isMobile}) {
         <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit} >
             <div className={"d-flex flex-column align-items-center text-center justify-content-center"} >
                 <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
-                    <h3>{data.workflowTitle}</h3>
+                    <h4>{data.workflowTitle}</h4>
                 </div>
                 <p data-aos="zoom-in" data-aos-easing="ease-in-out" data-aos-duration="600" data-aos-delay="600" style={{position:'relative', zIndex:'0', marginTop:'20px'}}>{data.workflowDescription}</p>
             </div>
