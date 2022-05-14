@@ -37,6 +37,7 @@ const Home = ({dataList}) => {
     const [lightMode, setLightMode] = useState('🌜')
     const [img_height, setImg_height] = useState('70px')
     const [img_width, setImg_width] = useState(10)
+    const screen_width = useWindowSize();
 
 
     useEffect(() => {
@@ -96,6 +97,30 @@ const Home = ({dataList}) => {
     }
     function onMouseExit(){
         setIsVisible(false);
+    }
+
+    function useWindowSize() {
+        // Initialize state with undefined width/height so server and client renders match
+        const [windowSize, setWindowSize] = useState({
+            width: undefined,
+            height: undefined,
+        });
+        useEffect(() => {
+            if (typeof window !== 'undefined') {
+                function handleResize() {
+                    setWindowSize({
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                    });
+                }
+                window.addEventListener("resize", handleResize);
+                // Call handler right away so state gets updated with initial window size
+                handleResize();
+                // Remove event listener on cleanup
+                return () => window.removeEventListener("resize", handleResize);
+            }
+        }, []); // Empty array ensures that effect is only run on mount
+        return windowSize;
     }
 
     return(
@@ -173,7 +198,7 @@ const Home = ({dataList}) => {
                     <h3 className={' content-div fw-bold'}> Contact</h3><br/>
                     <div className={''} >
                         {dataList.filter( x => x.sys.contentType.sys.id === "contact").map((data) => (
-                            <ContactSection isMobile={isMobile} data={data.fields} key={data.sys.id} />
+                            <ContactSection isMobile={isMobile} screen_width={screen_width} data={data.fields} key={data.sys.id} />
                         ))}
                     </div>
                 </div>
