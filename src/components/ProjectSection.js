@@ -31,8 +31,8 @@ export default function ProjectSection({ data, isMobile}) {
     }
 
     return(
-        <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit} >
-            <div className={"d-flex flex-column align-items-center text-center justify-content-center"} onClick={showText} >
+        <section className={"card project"} onMouseEnter={isMobile ? ()=>{} : onMouseEnter} onMouseLeave={isMobile ? ()=>{} : onMouseExit}>
+            <div className={"d-flex flex-column align-items-center text-center justify-content-center"} onClick={showText}>
                <div className={'d-flex flex-column align-items-center text-center justify-content-center light-mode content-div'}>
                 <h4 className={''}>{data.title}</h4>
                 <h6 style={{color:'gray'}} >{data.language}</h6>
