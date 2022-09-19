@@ -257,7 +257,7 @@
     overflow: auto;
   }
   .hideAbout {
-    overflow: auto;
+    overflow: visible;
     font-size: .8rem;
   }
 
