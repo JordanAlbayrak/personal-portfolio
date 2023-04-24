@@ -150,7 +150,7 @@ const Home = ({dataList}) => {
                         </div>
                     </div>
                     <div className={'text-center'}>
-                        <button onClick={handleClick} className={'light-mode border-0'} style={{width:"40px"}}> {lightMode}</button>
+                    ➡<button onClick={handleClick} className={'light-mode border-0'} style={{width:"40px"}}> {lightMode} </button>⬅
                     </div>
 
 
