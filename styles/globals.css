@@ -52,7 +52,7 @@ a {
   margin-right: auto;
   margin-bottom: 30px;
   background: var(--main-bg-color) !important;
-  color: var(--main-text-color);
+  color: var(--main-text-color) !important;
   border: None !important;
 }
 .card:last-child:nth-child(odd){
